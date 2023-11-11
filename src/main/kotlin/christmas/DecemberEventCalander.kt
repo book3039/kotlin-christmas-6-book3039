@@ -15,4 +15,13 @@ class DecemberEventCalander(day: Int) {
 
     fun createDaytypeEvent(): WoowaEvent =
         if (daytype() == "주말") WeekEndEvent() else WeekDayEvent()
+
+    fun findDateByDayName(day: String): List<Int> {
+        return (1..31).filter {
+            localDate
+                .withDayOfMonth(it)
+                .dayOfWeek
+                .toString() == day
+        }
+    }
 }
