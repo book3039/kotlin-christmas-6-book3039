@@ -7,7 +7,7 @@ open class EventCalander(year: Int, month: Int, date: Int) {
 
     fun getDayType(): String {
         return when (localDate.dayOfWeek.toString()) {
-            "FRIDAY", "SATURDAY", "SUNDAY" -> "주말"
+            "FRIDAY", "SATURDAY" -> "주말"
             else -> "평일"
         }
     }

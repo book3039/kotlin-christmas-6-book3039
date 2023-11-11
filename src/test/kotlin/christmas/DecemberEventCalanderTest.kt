@@ -8,17 +8,17 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class DecemberEventCalanderTest {
 
-    val weekDayEventCalander = DecemberEventCalander(4)
-    val weekEndEventCalander = DecemberEventCalander(3)
+    val weekDayEventCalander = DecemberEventCalander(3)
+    val weekEndEventCalander = DecemberEventCalander(2)
     val testCalander = DecemberEventCalander()
 
     @Test
-    fun `23년 12월의 날짜를 입력 받으면 평일인지 주말인지 구분한다_값 4`() {
+    fun `23년 12월의 날짜를 입력 받으면 평일인지 주말인지 구분한다_값 3`() {
         assertThat(weekDayEventCalander.getDayType()).isEqualTo("평일")
     }
 
     @Test
-    fun `23년 12월의 날짜를 입력 받으면 평일인지 주말인지 구분한다_값 3`() {
+    fun `23년 12월의 날짜를 입력 받으면 평일인지 주말인지 구분한다_값 2`() {
         assertThat(weekEndEventCalander.getDayType()).isEqualTo("주말")
     }
 
