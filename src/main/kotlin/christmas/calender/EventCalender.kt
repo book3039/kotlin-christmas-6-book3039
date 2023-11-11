@@ -1,5 +1,8 @@
-package christmas
+package christmas.calender
 
+import christmas.event.WeekDayEvent
+import christmas.event.WeekEndEvent
+import christmas.event.WoowaEvent
 import java.time.LocalDate
 
 open class EventCalender(year: Int, month: Int, date: Int) {

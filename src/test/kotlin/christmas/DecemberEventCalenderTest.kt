@@ -1,5 +1,10 @@
 package christmas
 
+import christmas.calender.DecemberEventCalender
+import christmas.event.ChristmasDdayEvent
+import christmas.event.SpecialEvent
+import christmas.event.WeekDayEvent
+import christmas.event.WeekEndEvent
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
