@@ -34,4 +34,11 @@ class DecemberEventCalanderTest {
         assertTrue(result is WeekEndEvent)
     }
 
+    @Test
+    fun `23년 12월 특정 요일의 날짜들을 모두 반환한다`() {
+        val testCalander = DecemberEventCalander(3)
+        val days = testCalander.findDateByDayName("MONDAY")
+        assertThat(days).isEqualTo(listOf(4, 11, 18, 25))
+    }
+
 }
