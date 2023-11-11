@@ -1,0 +1,5 @@
+package christmas
+
+interface WoowaEvent {
+
+}

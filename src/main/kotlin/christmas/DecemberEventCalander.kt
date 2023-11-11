@@ -12,4 +12,7 @@ class DecemberEventCalander(day: Int) {
             else -> "평일"
         }
     }
+
+    fun createDaytypeEvent(): WoowaEvent =
+        if (daytype() == "주말") WeekEndEvent() else WeekDayEvent()
 }
