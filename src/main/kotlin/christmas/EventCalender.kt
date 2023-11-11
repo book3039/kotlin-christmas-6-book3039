@@ -2,7 +2,7 @@ package christmas
 
 import java.time.LocalDate
 
-open class EventCalander(year: Int, month: Int, date: Int) {
+open class EventCalender(year: Int, month: Int, date: Int) {
     private val localDate: LocalDate = LocalDate.of(year, month, date)
 
     fun getDayType(): String {

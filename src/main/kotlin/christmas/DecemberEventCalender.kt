@@ -1,6 +1,6 @@
 package christmas
 
-class DecemberEventCalander(private val day: Int = 1) : EventCalander(2023, 12, day) {
+class DecemberEventCalender(private val day: Int = 1) : EventCalender(2023, 12, day) {
 
     private val starDays: List<Int>
 
