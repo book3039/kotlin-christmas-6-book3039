@@ -19,4 +19,19 @@ class DecemberEventCalanderTest {
         val testCalander = DecemberEventCalander(3)
         assertThat(testCalander.daytype()).isEqualTo("주말")
     }
+
+    @Test
+    fun `입력 받은 날짜가 평일이면, 평일 이벤트 객체를 생성해서 반환한다`() {
+        val testCalander = DecemberEventCalander(4)
+        val result = testCalander.createDaytypeEvent()
+        assertTrue(result is WeekDayEvent)
+    }
+
+    @Test
+    fun `입력 받은 날짜가 주말이면, 주말 이벤트 객체를 생성해서 반환한다`() {
+        val testCalander = DecemberEventCalander(3)
+        val result = testCalander.createDaytypeEvent()
+        assertTrue(result is WeekEndEvent)
+    }
+
 }
