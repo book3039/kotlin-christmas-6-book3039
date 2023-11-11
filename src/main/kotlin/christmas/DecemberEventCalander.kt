@@ -1,6 +1,6 @@
 package christmas
 
-class DecemberEventCalander(day: Int = 1) : EventCalander(2023, 12, day) {
+class DecemberEventCalander(private val day: Int = 1) : EventCalander(2023, 12, day) {
 
     private val starDays: List<Int>
 
@@ -11,5 +11,5 @@ class DecemberEventCalander(day: Int = 1) : EventCalander(2023, 12, day) {
     private fun findStarDays(): List<Int> =
         findDateByDayName("SUNDAY") + listOf(25)
 
-    fun hasStar(day: Int): Boolean = starDays.contains(day)
+    fun hasStar(): Boolean = starDays.contains(day)
 }

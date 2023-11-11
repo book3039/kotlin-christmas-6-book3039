@@ -43,7 +43,7 @@ class DecemberEventCalanderTest {
     @ParameterizedTest
     fun `이벤트 달력에 별이 있는 날짜인지 확인한다`(input: Int) {
         val testCalander = DecemberEventCalander(input)
-        assertTrue(testCalander.hasStar(input))
+        assertTrue(testCalander.hasStar())
     }
 
 }
