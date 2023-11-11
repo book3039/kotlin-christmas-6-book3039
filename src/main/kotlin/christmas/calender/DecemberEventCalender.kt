@@ -4,7 +4,14 @@ import christmas.event.ChristmasDdayEvent
 import christmas.event.SpecialEvent
 import christmas.event.WoowaEvent
 
-class DecemberEventCalender(private val day: Int = 1) : EventCalender(2023, 12, day) {
+private const val TARGET_YEAR = 2023
+private const val TARGET_MONTH = 12
+private const val FIRST_DAY = 1
+private const val CHRISTMAS_DAY = 25
+private const val TARGET_STAR_DAY = "SUNDAY"
+
+class DecemberEventCalender(private val day: Int = FIRST_DAY) :
+    EventCalender(TARGET_YEAR, TARGET_MONTH, day) {
 
     private val starDays: List<Int>
 
@@ -13,14 +20,14 @@ class DecemberEventCalender(private val day: Int = 1) : EventCalender(2023, 12, 
     }
 
     private fun findStarDays(): List<Int> =
-        super.findDateByDayName("SUNDAY") + listOf(25)
+        super.findDateByDayName(TARGET_STAR_DAY) + listOf(CHRISTMAS_DAY)
 
     fun hasStar(): Boolean = starDays.contains(day)
 
     fun createDecemberEvents(): List<WoowaEvent> {
         val events = mutableListOf(super.createDayTypeEvent())
         if (hasStar()) events.add(SpecialEvent())
-        if (day in 1..25) events.add(ChristmasDdayEvent())
+        if (day in FIRST_DAY..CHRISTMAS_DAY) events.add(ChristmasDdayEvent())
 
         return events.toList()
     }
