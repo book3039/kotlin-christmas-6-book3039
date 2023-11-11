@@ -41,4 +41,11 @@ class DecemberEventCalanderTest {
         assertThat(days).isEqualTo(listOf(4, 11, 18, 25))
     }
 
+    @ValueSource(ints = [3, 10, 17, 24, 25, 31])
+    @ParameterizedTest
+    fun `이벤트 달력에 별이 있는 날짜인지 확인한다`(input: Int) {
+        val testCalander = DecemberEventCalander(input)
+        assertTrue(testCalander.hasStar(input))
+    }
+
 }
