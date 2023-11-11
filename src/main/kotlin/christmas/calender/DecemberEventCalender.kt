@@ -6,7 +6,6 @@ import christmas.event.WoowaEvent
 
 private const val TARGET_YEAR = 2023
 private const val TARGET_MONTH = 12
-private const val FIRST_DAY = 1
 private const val CHRISTMAS_DAY = 25
 private const val TARGET_STAR_DAY = "SUNDAY"
 
