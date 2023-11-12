@@ -8,4 +8,5 @@ class DecemberMenu {
             ?.price ?: throw IllegalArgumentException()
     }
 
+    fun calculatePrice(s: Pair<String, Int>): Int = findPrice(s.first) * s.second
 }
