@@ -29,4 +29,6 @@ class EventPlanner {
     fun executeEvents() {
         for (event in events) event.execute(this)
     }
+
+    fun calculateTotalBenefitAmount(): Int = events.sumOf { it.benefit }
 }
