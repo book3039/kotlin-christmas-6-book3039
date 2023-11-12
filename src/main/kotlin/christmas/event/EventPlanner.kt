@@ -25,4 +25,8 @@ class EventPlanner {
 
     fun calculateTotalOrderPrice(orders: String): Int =
         parseMenu(orders).sumOf { DecemberMenu().calculatePrice(it) }
+
+    fun executeEvents() {
+        for (event in events) event.execute(this)
+    }
 }
