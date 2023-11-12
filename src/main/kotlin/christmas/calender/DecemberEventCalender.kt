@@ -9,8 +9,8 @@ private const val TARGET_MONTH = 12
 private const val CHRISTMAS_DAY = 25
 private const val TARGET_STAR_DAY = "SUNDAY"
 
-class DecemberEventCalender(private val day: Int = FIRST_DAY) :
-    EventCalender(TARGET_YEAR, TARGET_MONTH, day) {
+class DecemberEventCalender(private val date: Int = FIRST_DAY) :
+    EventCalender(TARGET_YEAR, TARGET_MONTH, date) {
 
     private val starDays: List<Int>
 
@@ -21,12 +21,12 @@ class DecemberEventCalender(private val day: Int = FIRST_DAY) :
     private fun findStarDays(): List<Int> =
         super.findDateByDayName(TARGET_STAR_DAY) + listOf(CHRISTMAS_DAY)
 
-    fun hasStar(): Boolean = starDays.contains(day)
+    fun hasStar(): Boolean = starDays.contains(date)
 
     fun createDecemberEvents(): List<WoowaEvent> {
         val events = mutableListOf(super.createDayTypeEvent())
         if (hasStar()) events.add(SpecialEvent())
-        if (day in FIRST_DAY..CHRISTMAS_DAY) events.add(ChristmasDdayEvent())
+        if (date in FIRST_DAY..CHRISTMAS_DAY) events.add(ChristmasDdayEvent(date))
 
         return events.toList()
     }
