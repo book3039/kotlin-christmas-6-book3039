@@ -28,4 +28,20 @@ class DecemberMenuTest {
         assertThat(decemberMenu.findPrice("제로콜라")).isEqualTo(3_000)
     }
 
+    @Test
+    fun `메뉴 이름과 수량을 입력하면, 총 가격을 반환한다_값 티본스테이크-2`() {
+        assertThat(decemberMenu.calculatePrice(Pair("티본스테이크", 2))).isEqualTo(110_000)
+    }
+
+    @Test
+    fun `메뉴 이름과 수량을 입력하면, 총 가격을 반환한다_값 초코케이크-3`() {
+        assertThat(decemberMenu.calculatePrice(Pair("초코케이크", 3))).isEqualTo(45_000)
+    }
+
+    @Test
+    fun `메뉴 이름과 수량을 입력하면, 총 가격을 반환한다_값 제로콜라-10`() {
+        assertThat(decemberMenu.calculatePrice(Pair("제로콜라", 10))).isEqualTo(30_000)
+    }
+
+
 }
