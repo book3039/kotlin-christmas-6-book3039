@@ -43,5 +43,15 @@ class DecemberMenuTest {
         assertThat(decemberMenu.calculatePrice(Pair("제로콜라", 10))).isEqualTo(30_000)
     }
 
+    @Test
+    fun `메뉴 이름을 입력하면, 카테고리를 반환한다_값 티본스테이크`() {
+        assertThat(decemberMenu.findCategory("티본스테이크")).isEqualTo("메인")
+    }
+
+    @Test
+    fun `메뉴 이름을 입력하면, 카테고리를 반환한다_값 초코케이크`() {
+        assertThat(decemberMenu.findCategory("초코케이크")).isEqualTo("디저트")
+    }
+
 
 }
