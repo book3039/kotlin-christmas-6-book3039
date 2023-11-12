@@ -31,4 +31,9 @@ class EventPlanner {
     }
 
     fun calculateTotalBenefitAmount(): Int = events.sumOf { it.benefit }
+
+    fun calculateEsitmatedPayment(): Int =
+        calculateTotalOrderPrice(orders) + events
+            .filterNot { it is GiveawayEvent}
+            .sumOf { it.benefit }
 }
