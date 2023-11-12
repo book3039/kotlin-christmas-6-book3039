@@ -1,6 +1,5 @@
-package christmas
+package christmas.calender
 
-import christmas.calender.DecemberEventCalender
 import christmas.event.ChristmasDdayEvent
 import christmas.event.SpecialEvent
 import christmas.event.WeekDayEvent
