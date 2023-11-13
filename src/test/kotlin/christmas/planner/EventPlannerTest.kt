@@ -16,10 +16,10 @@ class EventPlannerTest {
     fun `입력 받은 메뉴를 (메뉴이름, 갯수) 형태로 바꾼다`() {
         assertThat(eventPlanner.parseMenu(orders)).isEqualTo(
             listOf(
-                Pair("티본스테이크", 1),
-                Pair("바비큐립", 1),
-                Pair("초코케이크", 2),
-                Pair("제로콜라", 1),
+                "티본스테이크" to 1,
+                "바비큐립" to 1,
+                "초코케이크" to 2,
+                "제로콜라" to 1
             )
         )
     }
@@ -81,5 +81,17 @@ class EventPlannerTest {
         val otherEventPlanner = EventPlanner(3, otherOrders)
         otherEventPlanner.executeEvents()
         assertThat(otherEventPlanner.awardBadge()).isEqualTo("산타")
+    }
+
+    @Test
+    fun `혜택 내역을 반환한다`() {
+        assertThat(eventPlanner.createBenefitDetail().toSet()).isEqualTo(
+            listOf(
+                "크리스마스 디데이 할인" to -1200,
+                "평일 할인" to -4046,
+                "특별 할인" to -1000,
+                "증정 이벤트" to -25000,
+            ).toSet()
+        )
     }
 }
