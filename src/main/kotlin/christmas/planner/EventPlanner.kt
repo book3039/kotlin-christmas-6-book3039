@@ -16,10 +16,6 @@ class EventPlanner(private val date: Int, private val orders: String) {
     var parsedOrders = parseMenu(orders)
     lateinit var promotionMenu: Pair<String, Int>
 
-    init {
-        executeEvents()
-    }
-
     private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
         if (calculateTotalOrderPrice(orders) < 10_000) return emptyList()
 
