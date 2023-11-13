@@ -39,4 +39,14 @@ class EventPlanner(private val date: Int, private val orders: String) {
         calculateTotalOrderPrice(orders) + events
             .filterNot { it is GiveawayEvent }
             .sumOf { it.benefit }
+
+    fun awardBadge(): String {
+        val positiveTotalBenefit = (calculateTotalBenefitAmount() * -1)
+
+        if (positiveTotalBenefit in 5_000 until 10_000) return "별"
+        if (positiveTotalBenefit in 10_000 until 20_000) return "트리"
+        if (positiveTotalBenefit >= 20_000) return "산타"
+
+        return "없음"
+    }
 }
