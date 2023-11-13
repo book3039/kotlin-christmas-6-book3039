@@ -4,8 +4,10 @@ import java.text.DecimalFormat
 
 
 object OutputView {
-    fun printEventPreview(date: Int) =
+    fun printEventPreview(date: Int) {
         println("12월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!")
+        println()
+    }
 
     fun printMenu(parsedOrders: List<Pair<String, Int>>) {
         println("<주문 메뉴>")
@@ -32,5 +34,12 @@ object OutputView {
         println("${DecimalFormat("#,###").format(amount)}원")
         println()
     }
+
+    fun printEstimatedPayment(estimatedPayment: Int) {
+        println("<할인 후 예상 결제 금액>")
+        println("${DecimalFormat("#,###").format(estimatedPayment)}원")
+        println()
+    }
+
 
 }

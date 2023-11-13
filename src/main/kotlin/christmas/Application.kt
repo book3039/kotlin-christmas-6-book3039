@@ -15,6 +15,8 @@ fun main() {
         printTotalOrderPrice(eventPlanner.calculateTotalOrderPrice())
         printPromotionMenu(eventPlanner.promotionMenu)
         printTotalBenefitAmount(eventPlanner.calculateTotalBenefitAmount())
+        printEstimatedPayment(eventPlanner.calculateEstimatedPayment())
+        printAwardedBadge(eventPlanner.awardBadge())
     }
 
 
