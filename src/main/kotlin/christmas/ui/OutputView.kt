@@ -41,5 +41,10 @@ object OutputView {
         println()
     }
 
+    fun printAwardedBadge(badge: String) {
+        println("<12월 이벤트 배지>")
+        println(badge)
+        println()
+    }
 
 }
