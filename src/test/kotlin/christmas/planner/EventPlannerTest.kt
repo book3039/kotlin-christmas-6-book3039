@@ -47,4 +47,12 @@ class EventPlannerTest {
         assertThat(eventPlanner.calculateEsitmatedPayment()).isEqualTo(135_754)
     }
 
+    @Test
+    fun `입력 받은 메뉴의 총 금액이 1만원 미만이면 이벤트 적용을 하지 않는다(혜택 금액이 0원)`() {
+        val otherOrders = "아이스크림-1"
+        val otherEventPlanner = EventPlanner(3, otherOrders)
+        otherEventPlanner.executeEvents()
+        assertThat(otherEventPlanner.calculateTotalBenefitAmount()).isEqualTo(0)
+    }
+
 }
