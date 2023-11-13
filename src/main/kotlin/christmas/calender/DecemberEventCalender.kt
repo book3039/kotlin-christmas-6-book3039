@@ -24,9 +24,10 @@ class DecemberEventCalender(private val date: Int = FIRST_DAY) :
     fun hasStar(): Boolean = starDays.contains(date)
 
     fun createDecemberEvents(): List<WoowaEvent> {
-        val events = mutableListOf(super.createDayTypeEvent())
-        if (hasStar()) events.add(SpecialEvent())
+        val events = mutableListOf<WoowaEvent>()
         if (date in FIRST_DAY..CHRISTMAS_DAY) events.add(ChristmasDdayEvent(date))
+        events.add(super.createDayTypeEvent())
+        if (hasStar()) events.add(SpecialEvent())
 
         return events.toList()
     }

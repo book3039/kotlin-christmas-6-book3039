@@ -7,9 +7,11 @@ private const val TARGET_MONTH = "12월"
 private const val ORDERED_MENU = "<주문 메뉴>"
 private const val TOTAL_ORDER_PRICE = "<할인 전 총주문 금액>"
 private const val PROMOTION_MENU = "<증정 메뉴>"
+private const val BENEFIT_DETAIL = "<혜택 내역>"
 private const val TOTAL_BENEFIT_AMOUNT = "<총혜택 금액>"
 private const val ESTIMATED_PAYMENT = "<할인 후 예상 결제 금액>"
 private const val DECEMBER_EVENT_BADGE = "<12월 이벤트 배지>"
+private const val NONE = "없음"
 
 
 object OutputView {
@@ -45,6 +47,15 @@ object OutputView {
         println()
     }
 
+    fun printBenefitDetail(benefitDetail: List<Pair<String, Int>>) {
+        println(BENEFIT_DETAIL)
+        for (benefit in benefitDetail) {
+            println(benefit.first + ": ${decimalPattern.format(benefit.second)}원")
+        }
+        if (benefitDetail.isEmpty()) println(NONE)
+        println()
+    }
+
     fun printTotalBenefitAmount(amount: Int) {
         println(TOTAL_BENEFIT_AMOUNT)
         println("${decimalPattern.format(amount)}원")
@@ -67,9 +78,12 @@ object OutputView {
         printMenu(eventPlanner.parseMenu(orders))
         printTotalOrderPrice(eventPlanner.calculateTotalOrderPrice())
         printPromotionMenu(EventPlanner.promotionMenu)
+        printBenefitDetail(eventPlanner.createBenefitDetail())
         printTotalBenefitAmount(eventPlanner.calculateTotalBenefitAmount())
         printEstimatedPayment(eventPlanner.calculateEstimatedPayment())
         printAwardedBadge(eventPlanner.awardBadge())
     }
+
+
 
 }
