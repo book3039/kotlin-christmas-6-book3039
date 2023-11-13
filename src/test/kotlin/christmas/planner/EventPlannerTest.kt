@@ -8,6 +8,11 @@ class EventPlannerTest {
     private val orders = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1"
     private val eventPlanner = EventPlanner(3, orders)
 
+    init {
+        eventPlanner.executeEvents()
+    }
+
+
     @Test
     fun `입력 받은 메뉴를 (메뉴이름, 갯수) 형태로 바꾼다`() {
         assertThat(eventPlanner.parseMenu(orders)).isEqualTo(
@@ -33,9 +38,13 @@ class EventPlannerTest {
     }
 
     @Test
-    fun `입력 받은 날짜와 메뉴의 혜택 금액을 구한다`() {
-        eventPlanner.executeEvents()
+    fun `입력 받은 날짜와 메뉴의 총 혜택 금액을 구한다`() {
         assertThat(eventPlanner.calculateTotalBenefitAmount()).isEqualTo(-31_246)
+    }
+
+    @Test
+    fun `입력 받은 날짜와 메뉴의 할인 후 예상 결제 금액을 구한다`() {
+        assertThat(eventPlanner.calculateEsitmatedPayment()).isEqualTo(135_754)
     }
 
 }
