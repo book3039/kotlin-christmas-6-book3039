@@ -4,7 +4,7 @@ import christmas.badge.SantaBadge
 import christmas.badge.StarBadge
 import christmas.badge.TreeBadge
 import christmas.calender.DecemberEventCalender
-import christmas.event.GiveawayEvent
+import christmas.event.PromotionEvent
 import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
 
@@ -14,12 +14,13 @@ class EventPlanner(private val date: Int, private val orders: String) {
 
     private val events: List<WoowaEvent> = setEvents(date, orders)
     var parsedOrders = parseMenu(orders)
+    lateinit var promotionMenu: Pair<String, Int>
 
     private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
         if (calculateTotalOrderPrice(orders) < 10_000) return emptyList()
 
         val tempEvents = DecemberEventCalender(date).createDecemberEvents().toMutableList()
-        if (calculateTotalOrderPrice(orders) >= 120_000) tempEvents += listOf(GiveawayEvent())
+        if (calculateTotalOrderPrice(orders) >= 120_000) tempEvents += listOf(PromotionEvent())
 
         return tempEvents
     }
@@ -41,9 +42,7 @@ class EventPlanner(private val date: Int, private val orders: String) {
     fun calculateTotalBenefitAmount(): Int = events.sumOf { it.benefit }
 
     fun calculateEstimatedPayment(): Int =
-        calculateTotalOrderPrice(orders) + events
-            .filterNot { it is GiveawayEvent }
-            .sumOf { it.benefit }
+        calculateTotalOrderPrice(orders) + events.filterNot { it is PromotionEvent }.sumOf { it.benefit }
 
     fun awardBadge(): String {
         val positiveTotalBenefit = (calculateTotalBenefitAmount() * -1)

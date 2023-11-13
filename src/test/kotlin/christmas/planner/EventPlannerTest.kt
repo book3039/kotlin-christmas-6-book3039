@@ -12,7 +12,6 @@ class EventPlannerTest {
         eventPlanner.executeEvents()
     }
 
-
     @Test
     fun `입력 받은 메뉴를 (메뉴이름, 갯수) 형태로 바꾼다`() {
         assertThat(eventPlanner.parseMenu(orders)).isEqualTo(
@@ -48,6 +47,11 @@ class EventPlannerTest {
     }
 
     @Test
+    fun `할인 전 총주문 금액이 12만원 이상일 때, 샴페인 1개 증정한다`() {
+        assertThat(eventPlanner.promotionMenu.first).isEqualTo("샴페인")
+    }
+
+    @Test
     fun `입력 받은 메뉴의 총 금액이 1만원 미만이면 이벤트 적용을 하지 않는다(혜택 금액이 0원)`() {
         val otherOrders = "아이스크림-1"
         val otherEventPlanner = EventPlanner(3, otherOrders)
@@ -78,5 +82,4 @@ class EventPlannerTest {
         otherEventPlanner.executeEvents()
         assertThat(otherEventPlanner.awardBadge()).isEqualTo("산타")
     }
-
 }
