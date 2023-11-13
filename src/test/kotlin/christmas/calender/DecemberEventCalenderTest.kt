@@ -56,7 +56,7 @@ class DecemberEventCalenderTest {
         val result = testCalander.createDecemberEvents()
         assertThat(result)
             .usingRecursiveComparison()
-            .isEqualTo(listOf(WeekDayEvent(), SpecialEvent(), ChristmasDdayEvent()))
+            .isEqualTo(listOf(WeekDayEvent(), SpecialEvent(), ChristmasDdayEvent(3)))
     }
 
 }

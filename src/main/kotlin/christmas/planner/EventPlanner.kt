@@ -5,32 +5,32 @@ import christmas.event.GiveawayEvent
 import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
 
-class EventPlanner {
+class EventPlanner(private val date: Int, private val orders: String) {
 
-    private val events: List<WoowaEvent> = listOf()
-    private val orders = "아이스크림-1"
+    private val events: List<WoowaEvent> = setEvents(date, orders)
     var parsedOrders = parseMenu(orders)
 
 
     init {
-        if (calculateTotalOrderPrice(orders) >= 10_000) setEvents()
     }
 
-    private fun setEvents() {
-        val tempEvents = DecemberEventCalender(3).createDecemberEvents().toMutableList()
+    private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
+        if (calculateTotalOrderPrice(orders) < 10_000) return emptyList()
+
+        val tempEvents = DecemberEventCalender(date).createDecemberEvents().toMutableList()
         if (calculateTotalOrderPrice(orders) >= 120_000) tempEvents += listOf(GiveawayEvent())
-        events.toMutableList() += tempEvents
-        events.toList()
+
+        return tempEvents
     }
 
-    fun parseMenu(orders: String): List<Pair<String, Int>> {
+    fun parseMenu(orders: String = this.orders): List<Pair<String, Int>> {
         return orders.split(",").map {
             val (name, count) = it.split("-")
             name to count.toInt()
         }
     }
 
-    fun calculateTotalOrderPrice(orders: String): Int =
+    fun calculateTotalOrderPrice(orders: String = this.orders): Int =
         parseMenu(orders).sumOf { DecemberMenu().calculatePrice(it) }
 
     fun executeEvents() {
