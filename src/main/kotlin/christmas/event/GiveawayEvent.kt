@@ -1,6 +1,7 @@
 package christmas.event
 
 import christmas.menu.DecemberMenuItem
+import christmas.planner.EventPlanner
 
 class GiveawayEvent() : WoowaEvent {
 

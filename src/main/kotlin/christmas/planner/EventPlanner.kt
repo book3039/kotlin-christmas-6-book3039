@@ -1,6 +1,8 @@
-package christmas.event
+package christmas.planner
 
 import christmas.calender.DecemberEventCalender
+import christmas.event.GiveawayEvent
+import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
 
 class EventPlanner {
@@ -34,6 +36,6 @@ class EventPlanner {
 
     fun calculateEsitmatedPayment(): Int =
         calculateTotalOrderPrice(orders) + events
-            .filterNot { it is GiveawayEvent}
+            .filterNot { it is GiveawayEvent }
             .sumOf { it.benefit }
 }
