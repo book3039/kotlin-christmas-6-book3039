@@ -40,7 +40,7 @@ class EventPlanner(private val date: Int, private val orders: String) {
 
     fun calculateTotalBenefitAmount(): Int = events.sumOf { it.benefit }
 
-    fun calculateEsitmatedPayment(): Int =
+    fun calculateEstimatedPayment(): Int =
         calculateTotalOrderPrice(orders) + events
             .filterNot { it is GiveawayEvent }
             .sumOf { it.benefit }

@@ -44,7 +44,7 @@ class EventPlannerTest {
 
     @Test
     fun `입력 받은 날짜와 메뉴의 할인 후 예상 결제 금액을 구한다`() {
-        assertThat(eventPlanner.calculateEsitmatedPayment()).isEqualTo(135_754)
+        assertThat(eventPlanner.calculateEstimatedPayment()).isEqualTo(135_754)
     }
 
     @Test
