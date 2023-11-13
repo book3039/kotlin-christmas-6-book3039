@@ -55,4 +55,28 @@ class EventPlannerTest {
         assertThat(otherEventPlanner.calculateTotalBenefitAmount()).isEqualTo(0)
     }
 
+    @Test
+    fun `혜택 금액에 따라 이벤트 배지를 증정한다_값 -6,069_별 이벤트 배지 증정`() {
+        val otherOrders = "아이스크림-2"
+        val otherEventPlanner = EventPlanner(3, otherOrders)
+        otherEventPlanner.executeEvents()
+        assertThat(otherEventPlanner.awardBadge()).isEqualTo("별")
+    }
+
+    @Test
+    fun `혜택 금액에 따라 이벤트 배지를 증정한다_값 -10,115_트리 이벤트 배지 증정`() {
+        val otherOrders = "아이스크림-5"
+        val otherEventPlanner = EventPlanner(3, otherOrders)
+        otherEventPlanner.executeEvents()
+        assertThat(otherEventPlanner.awardBadge()).isEqualTo("트리")
+    }
+
+    @Test
+    fun `혜택 금액에 따라 이벤트 배지를 증정한다_값 -20,230_산타 이벤트 배지 증정`() {
+        val otherOrders = "아이스크림-10"
+        val otherEventPlanner = EventPlanner(3, otherOrders)
+        otherEventPlanner.executeEvents()
+        assertThat(otherEventPlanner.awardBadge()).isEqualTo("산타")
+    }
+
 }
