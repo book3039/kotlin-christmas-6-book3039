@@ -21,4 +21,9 @@ object OutputView {
         println()
     }
 
+    fun printPromotionMenu(promotion :Pair<String, Int>) {
+        println("<증정 메뉴>")
+        println(promotion.first + " ${promotion.second}개")
+    }
+
 }
