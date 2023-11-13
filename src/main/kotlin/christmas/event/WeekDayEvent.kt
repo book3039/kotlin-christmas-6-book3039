@@ -13,7 +13,6 @@ class WeekDayEvent() : WoowaEvent {
 
         for (order in dessertOrders) {
             benefit += order.second * -2023
-
         }
     }
 }
