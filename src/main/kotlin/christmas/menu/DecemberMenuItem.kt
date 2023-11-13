@@ -8,7 +8,7 @@ enum class DecemberMenuItem(
 
     APPETIZER_MUSHROOM_SOUP("애피타이저", "양송이수프", 6_000),
     APPETIZER_TAPAS("애피타이저", "타파스", 5_500),
-    APPETIZER_CEASAR_SALAD("애피타이저", "시저샐러드", 8_000),
+    APPETIZER_CAESAR_SALAD("애피타이저", "시저샐러드", 8_000),
 
     MAIN_T_BONE_STEAK("메인", "티본스테이크", 55_000),
     MAIN_BBQ_RIB("메인", "바비큐립", 54_000),
