@@ -1,9 +1,14 @@
 package christmas.planner
 
+import christmas.badge.SantaBadge
+import christmas.badge.StarBadge
+import christmas.badge.TreeBadge
 import christmas.calender.DecemberEventCalender
 import christmas.event.GiveawayEvent
 import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
+
+private const val NONE_BADGE = "없음"
 
 class EventPlanner(private val date: Int, private val orders: String) {
 
@@ -43,10 +48,10 @@ class EventPlanner(private val date: Int, private val orders: String) {
     fun awardBadge(): String {
         val positiveTotalBenefit = (calculateTotalBenefitAmount() * -1)
 
-        if (positiveTotalBenefit in 5_000 until 10_000) return "별"
-        if (positiveTotalBenefit in 10_000 until 20_000) return "트리"
-        if (positiveTotalBenefit >= 20_000) return "산타"
+        if (positiveTotalBenefit in 5_000 until 10_000) return StarBadge().badgeName
+        if (positiveTotalBenefit in 10_000 until 20_000) return TreeBadge().badgeName
+        if (positiveTotalBenefit >= 20_000) return SantaBadge().badgeName
 
-        return "없음"
+        return NONE_BADGE
     }
 }
