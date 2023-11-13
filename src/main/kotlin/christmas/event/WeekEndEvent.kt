@@ -7,7 +7,7 @@ class WeekEndEvent() : WoowaEvent {
 
     override var benefit: Int = 0
     override fun execute(eventPlanner: EventPlanner) {
-        val mainOrders = eventPlanner.parsedOrders
+        val mainOrders = eventPlanner.parseMenu()
             .filter { DecemberMenu().findCategory(it.first) == "메인" }
 
         for (order in mainOrders) {

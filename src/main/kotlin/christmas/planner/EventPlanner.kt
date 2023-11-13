@@ -13,7 +13,6 @@ private const val NONE_BADGE = "없음"
 class EventPlanner(private val date: Int, private val orders: String) {
 
     private val events: List<WoowaEvent> = setEvents(date, orders)
-    var parsedOrders = parseMenu(orders)
     lateinit var promotionMenu: Pair<String, Int>
 
     private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
