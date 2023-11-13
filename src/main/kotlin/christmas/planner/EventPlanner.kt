@@ -30,12 +30,15 @@ class EventPlanner(private val date: Int, private val orders: String) {
         }
     }
 
-    fun calculateTotalOrderPrice(orders: String = this.orders): Int =
-        parseMenu(orders).sumOf { DecemberMenu().calculatePrice(it) }
-
     fun executeEvents() {
         for (event in events) event.execute(this)
     }
+
+    fun createBenefitDetail(): List<Pair<String, Int>> = events.map { it.eventName to it.benefit }
+
+
+    fun calculateTotalOrderPrice(orders: String = this.orders): Int =
+        parseMenu(orders).sumOf { DecemberMenu().calculatePrice(it) }
 
     fun calculateTotalBenefitAmount(): Int = events.sumOf { it.benefit }
 
