@@ -48,7 +48,7 @@ class EventPlannerTest {
 
     @Test
     fun `할인 전 총주문 금액이 12만원 이상일 때, 샴페인 1개 증정한다`() {
-        assertThat(eventPlanner.promotionMenu.first).isEqualTo("샴페인")
+        assertThat(EventPlanner.promotionMenu.first).isEqualTo("샴페인")
     }
 
     @Test

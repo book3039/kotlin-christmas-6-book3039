@@ -11,6 +11,6 @@ class PromotionEvent() : WoowaEvent {
         Pair(DecemberMenuItem.BEVERAGE_CHAMPAGNE.menuName, totalCount)
 
     override fun execute(eventPlanner: EventPlanner) {
-        eventPlanner.promotionMenu = promotion
+        EventPlanner.promotionMenu = promotion
     }
 }

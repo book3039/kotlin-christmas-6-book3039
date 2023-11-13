@@ -1,5 +1,6 @@
 package christmas.ui
 
+import christmas.planner.EventPlanner
 import java.text.DecimalFormat
 
 private const val TARGET_MONTH = "12월"
@@ -59,7 +60,16 @@ object OutputView {
     fun printAwardedBadge(badge: String) {
         println(DECEMBER_EVENT_BADGE)
         println(badge)
-        println()
+    }
+
+    fun printAllInOrder(date: Int, orders: String, eventPlanner: EventPlanner) {
+        printEventPreview(date)
+        printMenu(eventPlanner.parseMenu(orders))
+        printTotalOrderPrice(eventPlanner.calculateTotalOrderPrice())
+        printPromotionMenu(EventPlanner.promotionMenu)
+        printTotalBenefitAmount(eventPlanner.calculateTotalBenefitAmount())
+        printEstimatedPayment(eventPlanner.calculateEstimatedPayment())
+        printAwardedBadge(eventPlanner.awardBadge())
     }
 
 }

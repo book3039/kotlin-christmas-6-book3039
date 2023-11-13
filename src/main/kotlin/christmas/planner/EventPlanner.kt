@@ -8,12 +8,11 @@ import christmas.event.PromotionEvent
 import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
 
-private const val NONE_BADGE = "없음"
+private const val NONE = "없음"
 
 class EventPlanner(private val date: Int, private val orders: String) {
 
     private val events: List<WoowaEvent> = setEvents(date, orders)
-    lateinit var promotionMenu: Pair<String, Int>
 
     private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
         if (calculateTotalOrderPrice(orders) < 10_000) return emptyList()
@@ -50,6 +49,10 @@ class EventPlanner(private val date: Int, private val orders: String) {
         if (positiveTotalBenefit in 10_000 until 20_000) return TreeBadge().badgeName
         if (positiveTotalBenefit >= 20_000) return SantaBadge().badgeName
 
-        return NONE_BADGE
+        return NONE
+    }
+
+    companion object {
+        var promotionMenu: Pair<String, Int> = NONE to 0
     }
 }
