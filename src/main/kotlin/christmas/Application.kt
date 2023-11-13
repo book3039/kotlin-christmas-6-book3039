@@ -14,6 +14,7 @@ fun main() {
         printMenu(eventPlanner.parsedOrders)
         printTotalOrderPrice(eventPlanner.calculateTotalOrderPrice())
         printPromotionMenu(eventPlanner.promotionMenu)
+        printTotalBenefitAmount(eventPlanner.calculateTotalBenefitAmount())
     }
 
 

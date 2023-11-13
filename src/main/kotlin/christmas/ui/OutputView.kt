@@ -24,6 +24,13 @@ object OutputView {
     fun printPromotionMenu(promotion :Pair<String, Int>) {
         println("<증정 메뉴>")
         println(promotion.first + " ${promotion.second}개")
+        println()
+    }
+
+    fun printTotalBenefitAmount(amount: Int) {
+        println("<총혜택 금액>")
+        println("${DecimalFormat("#,###").format(amount)}원")
+        println()
     }
 
 }
