@@ -29,33 +29,40 @@ object InputView {
     private fun validateReadDate(input: String) {
         InputValidator.checkDateMatchRegex(input)
         InputValidator.checkCalenderRange(input)
-}
+    }
 
-fun readOrders(): String {
-    while (true) {
-        try {
-            println(MSG_INPUT_TAKE_ORDER)
-            val input = Console.readLine()
-            validateReadOrders(input)
-            return input
-        } catch (e: NumberFormatException) {
-            println(MSG_ERR_NOT_VALID_ORDER)
-        } catch (e: IllegalArgumentException) {
-            println(MSG_ERR_NOT_VALID_ORDER)
+    fun readOrders(): String {
+        while (true) {
+            try {
+                println(MSG_INPUT_TAKE_ORDER)
+                val input = Console.readLine()
+                validateReadOrders(input)
+                return input
+            } catch (e: NumberFormatException) {
+                println(MSG_ERR_NOT_VALID_ORDER)
+            } catch (e: IllegalArgumentException) {
+                println(MSG_ERR_NOT_VALID_ORDER)
+            }
         }
     }
-}
 
-private fun validateReadOrders(input: String) {
-    val menuNames = mutableListOf<String>()
-    input.split(",").map {
-        InputValidator.checkMenuNameMatchRegex(it)
+    private fun validateReadOrders(input: String) {
+        val menuNames = mutableListOf<String>()
+        var totalCount = 0
+        input.split(",").map {
+            InputValidator.checkMenuNameMatchRegex(it)
 
-        val (name, count) = it.split("-")
+            val (name, count) = it.split("-")
+            validateEachOrder(name, count)
+            require(!menuNames.contains(name))
+            menuNames.add(name)
+            totalCount += count.toInt()
+        }
+        require(totalCount <= 20)
+    }
+
+    private fun validateEachOrder(name: String, count: String) {
         InputValidator.checkMenuExist(name)
         InputValidator.checkMenuCountRange(count)
-        require(!menuNames.contains(name))
-        menuNames.add(name)
     }
-}
 }
