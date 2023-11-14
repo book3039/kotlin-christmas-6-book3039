@@ -27,4 +27,9 @@ object InputValidator {
 
     fun checkMenuExist(input: String) =
         require(DecemberMenu().hasMenu(input))
+
+    fun checkIsOnlyBeverage(menuNames: MutableList<String>) {
+        val categories = menuNames.map { DecemberMenu().findCategory(it) }
+        require(!categories.all { it == "음료" })
+    }
 }

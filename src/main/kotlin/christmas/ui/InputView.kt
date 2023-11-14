@@ -59,6 +59,7 @@ object InputView {
             totalCount += count.toInt()
         }
         require(totalCount <= 20)
+        InputValidator.checkIsOnlyBeverage(menuNames)
     }
 
     private fun validateEachOrder(name: String, count: String) {
