@@ -7,6 +7,7 @@ private const val MSG_INPUT_TAKE_ORDER = "주문하실 메뉴를 메뉴와 개�
 
 object InputView {
 
+
     fun readDate(): Int {
         while (true) {
             try {
@@ -17,7 +18,7 @@ object InputView {
             } catch (e: NumberFormatException) {
                 println(MSG_ERR_NOT_VALID_DATE)
             } catch (e: IllegalArgumentException) {
-                println(e.message)
+                println(MSG_ERR_NOT_VALID_ORDER)
             }
         }
     }
@@ -35,11 +36,21 @@ object InputView {
             try {
                 println(MSG_INPUT_TAKE_ORDER)
                 val input = Console.readLine()
-
+                validateReadOrders(input)
                 return input
+            } catch (e: NumberFormatException) {
+                println(MSG_ERR_NOT_VALID_ORDER)
             } catch (e: IllegalArgumentException) {
-                e.message
+                println(MSG_ERR_NOT_VALID_ORDER)
             }
+        }
+    }
+
+    private fun validateReadOrders(input: String) {
+        input.split(",").map {
+            InputValidator.checkMenuNameMatchRegex(input)
+            val (_, count) = it.split("-")
+            InputValidator.checkMenuCountRange(count)
         }
     }
 }
