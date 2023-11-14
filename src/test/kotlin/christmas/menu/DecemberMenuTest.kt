@@ -7,7 +7,6 @@ class DecemberMenuTest {
 
     private val decemberMenu = DecemberMenu()
 
-
     @Test
     fun `메뉴 이름을 입력하면, 가격을 반환한다_값 양송이수프`() {
         assertThat(decemberMenu.findPrice("양송이수프")).isEqualTo(6_000)
@@ -52,6 +51,4 @@ class DecemberMenuTest {
     fun `메뉴 이름을 입력하면, 카테고리를 반환한다_값 초코케이크`() {
         assertThat(decemberMenu.findCategory("초코케이크")).isEqualTo("디저트")
     }
-
-
 }
