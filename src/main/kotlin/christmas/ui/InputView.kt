@@ -21,7 +21,7 @@ object InputView {
             } catch (e: NumberFormatException) {
                 println(MSG_ERR_NOT_VALID_DATE)
             } catch (e: IllegalArgumentException) {
-                println(MSG_ERR_NOT_VALID_ORDER)
+                println(MSG_ERR_NOT_VALID_DATE)
             }
         }
     }
