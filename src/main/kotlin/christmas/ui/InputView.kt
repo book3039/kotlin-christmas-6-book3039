@@ -50,13 +50,15 @@ object InputView {
     }
 
     private fun validateReadOrders(input: String) {
+        val menuNames = mutableListOf<String>()
         input.split(",").map {
             InputValidator.checkMenuNameMatchRegex(it)
+
             val (name, count) = it.split("-")
-            InputValidator.apply {
-                checkMenuExist(name)
-                checkMenuCountRange(count)
-            }
+            InputValidator.checkMenuExist(name)
+            InputValidator.checkMenuCountRange(count)
+            require(!menuNames.contains(name))
+            menuNames.add(name)
         }
     }
 }
