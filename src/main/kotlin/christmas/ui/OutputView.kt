@@ -39,7 +39,7 @@ object OutputView {
         println()
     }
 
-    fun printPromotionMenu(promotion :Pair<String, Int>) {
+    fun printPromotionMenu(promotion: Pair<String, Int>) {
         println(PROMOTION_MENU)
         print(promotion.first)
         if (promotion.second > 0) print(" ${promotion.second}개")
@@ -83,7 +83,4 @@ object OutputView {
         printEstimatedPayment(eventPlanner.calculateEstimatedPayment())
         printAwardedBadge(eventPlanner.awardBadge())
     }
-
-
-
 }
