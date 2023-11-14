@@ -36,7 +36,6 @@ class EventPlanner(private val date: Int, private val orders: String) {
 
     fun createBenefitDetail(): List<Pair<String, Int>> = events.map { it.eventName to it.benefit }
 
-
     fun calculateTotalOrderPrice(orders: String = this.orders): Int =
         parseMenu(orders).sumOf { DecemberMenu().calculatePrice(it) }
 

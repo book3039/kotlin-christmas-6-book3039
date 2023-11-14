@@ -5,5 +5,6 @@ class SantaBadge : EventBadge {
     override val count: Int = 0
 
     override fun getPresent() {
+        TODO("Not yet implemented")
     }
 }

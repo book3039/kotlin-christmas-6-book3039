@@ -3,7 +3,7 @@ package christmas.event
 import christmas.menu.DecemberMenuItem
 import christmas.planner.EventPlanner
 
-class PromotionEvent() : WoowaEvent {
+class PromotionEvent : WoowaEvent {
 
     override val eventName: String = "증정 이벤트"
     override val benefit: Int = -25_000

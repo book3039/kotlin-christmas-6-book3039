@@ -3,7 +3,7 @@ package christmas.event
 import christmas.menu.DecemberMenu
 import christmas.planner.EventPlanner
 
-class WeekEndEvent() : WoowaEvent {
+class WeekEndEvent : WoowaEvent {
 
     override val eventName: String = "주말 할인"
     override var benefit: Int = 0
