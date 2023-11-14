@@ -10,15 +10,11 @@ private const val MAX_MENU_COUNT = 20
 
 object InputValidator {
 
+    private val dateRegex = Regex("""^[0-9]+$""")
     private val menuRegex = Regex("""^([가-힣]+)-([0-9]+)$""")
 
-    fun checkIsDigit(input: String) =
-        require(input.all { it.isDigit() })
-
-
-    fun checkIsEmptyString(input: String) =
-        require(input.isNotEmpty())
-
+    fun checkDateMatchRegex(input: String) =
+        require(dateRegex.matches(input))
 
     fun checkCalenderRange(input: String) =
         require(input.toInt() in DECEMBER_FIRST_DAY..DECEMBER_LAST_DAY)
