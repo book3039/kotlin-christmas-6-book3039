@@ -1,7 +1,7 @@
 package christmas.ui
 
 import christmas.menu.CATEGORY_BEVERAGE
-import christmas.menu.DecemberMenu
+import christmas.planner.EventPlanner
 
 private const val DECEMBER_FIRST_DAY = 1
 private const val DECEMBER_LAST_DAY = 31
@@ -27,10 +27,10 @@ object InputValidator {
         require(menuRegex.matches(input))
 
     fun checkMenuExist(input: String) =
-        require(DecemberMenu().hasMenu(input))
+        require(EventPlanner.menuInformation().hasMenu(input))
 
     fun checkIsOnlyBeverage(menuNames: MutableList<String>) {
-        val categories = menuNames.map { DecemberMenu().findCategory(it) }
+        val categories = menuNames.map { EventPlanner.menuInformation().findCategory(it) }
         require(!categories.all { it == CATEGORY_BEVERAGE })
     }
 }

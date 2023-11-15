@@ -66,5 +66,7 @@ class EventPlanner(date: Int, private val orders: String) {
 
     companion object {
         var promotionMenu: Pair<String, Int> = NONE to 0
+
+        fun menuInformation() = DecemberMenu()
     }
 }
