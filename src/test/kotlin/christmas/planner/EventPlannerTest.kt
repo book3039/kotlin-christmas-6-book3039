@@ -101,4 +101,9 @@ class EventPlannerTest {
     fun `(메뉴이름(한글)-숫자) 형식이 아닐경우 예외처리 한다`() {
         assertThrows<IllegalArgumentException> { EventPlanner(3, "아이스크림 1,파스타 2") }
     }
+
+    @Test
+    fun `메뉴 갯수가 1 ~ 20의 범위가 아니면 예외처리 한다`() {
+        assertThrows<IllegalArgumentException> { EventPlanner(3, "아이스크림-100") }
+    }
 }
