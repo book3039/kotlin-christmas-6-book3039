@@ -5,13 +5,11 @@ import christmas.ui.InputView
 import christmas.ui.OutputView
 
 fun main() {
-    OutputView.apply {
-        printWelcomeMessage()
+    OutputView.printWelcomeMessage()
+    val date = InputView.readDate()
+    val orders = InputView.readOrders()
+    val eventPlanner = EventPlanner(date, orders).apply { executeEvents() }
 
-        val date = InputView.readDate()
-        val orders = InputView.readOrders()
-        val eventPlanner = EventPlanner(date, orders).apply { executeEvents() }
-
-        printAllInOrder(date, orders, eventPlanner)
-    }
+    OutputView.printEventPreview(date)
+    OutputView.printAllInOrder(eventPlanner)
 }

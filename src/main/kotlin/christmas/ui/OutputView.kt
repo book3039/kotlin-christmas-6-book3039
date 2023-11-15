@@ -71,9 +71,8 @@ object OutputView {
         println(badge)
     }
 
-    fun printAllInOrder(date: Int, orders: String, eventPlanner: EventPlanner) {
-        printEventPreview(date)
-        printMenu(eventPlanner.parseMenu(orders))
+    fun printAllInOrder(eventPlanner: EventPlanner) {
+        printMenu(eventPlanner.parseMenu())
         printTotalOrderPrice(eventPlanner.calculateTotalOrderPrice())
         printPromotionMenu(EventPlanner.promotionMenu)
         printBenefitDetail(eventPlanner.createBenefitDetail())

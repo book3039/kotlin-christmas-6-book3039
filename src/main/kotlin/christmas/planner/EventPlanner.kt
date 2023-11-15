@@ -16,7 +16,7 @@ private const val MIN_PRICE_FOR_STAR_BADGE = 5_000
 private const val MIN_PRICE_FOR_TREE_BADGE = 10_000
 private const val MIN_PRICE_FOR_SANTA_BADGE = 20_000
 
-class EventPlanner(date: Int, private val orders: String) {
+class EventPlanner(private val date: Int, private val orders: String) {
     private val events: List<WoowaEvent>
 
     init {
