@@ -103,7 +103,13 @@ class EventPlannerTest {
     }
 
     @Test
-    fun `메뉴 갯수가 1 ~ 20의 범위가 아니면 예외처리 한다`() {
+    fun `메뉴 개수가 1 ~ 20의 범위가 아니면 예외처리 한다`() {
         assertThrows<IllegalArgumentException> { EventPlanner(3, "아이스크림-100") }
     }
+
+    @Test
+    fun `메뉴에 없는 메뉴를 주문하면 예외처리 한다`() {
+        assertThrows<IllegalArgumentException> { EventPlanner(3, "투움바파스타-1") }
+    }
+
 }
