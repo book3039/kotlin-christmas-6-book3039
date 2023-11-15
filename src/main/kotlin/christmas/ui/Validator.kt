@@ -9,9 +9,6 @@ private const val DECEMBER_LAST_DAY = 31
 private const val MIN_MENU_COUNT = 1
 private const val MAX_MENU_COUNT = 20
 
-private const val MAX_PRICE_COUNT = 20
-
-
 object Validator {
 
     private val dateRegex = Regex("""^[0-9]+$""")
@@ -48,7 +45,7 @@ object Validator {
             menuNames.add(name)
             totalCount += count.toInt()
         }
-        require(totalCount <= MAX_PRICE_COUNT)
+        require(totalCount <= MAX_MENU_COUNT)
         checkIsOnlyBeverage(menuNames)
     }
 
