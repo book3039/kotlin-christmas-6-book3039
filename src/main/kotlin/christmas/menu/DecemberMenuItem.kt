@@ -10,7 +10,6 @@ enum class DecemberMenuItem(
     override val menuName: String,
     override val price: Int
 ) : WoowaMenuItem {
-
     APPETIZER_MUSHROOM_SOUP(CATEGORY_APPETIZER, "양송이수프", 6_000),
     APPETIZER_TAPAS(CATEGORY_APPETIZER, "타파스", 5_500),
     APPETIZER_CAESAR_SALAD(CATEGORY_APPETIZER, "시저샐러드", 8_000),
