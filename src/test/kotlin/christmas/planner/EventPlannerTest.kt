@@ -54,32 +54,28 @@ class EventPlannerTest {
 
     @Test
     fun `입력 받은 메뉴의 총 금액이 1만원 미만이면 이벤트 적용을 하지 않는다(혜택 금액이 0원)`() {
-        val otherOrders = "아이스크림-1"
-        val otherEventPlanner = EventPlanner(3, otherOrders)
+        val otherEventPlanner = EventPlanner(3, "아이스크림-1")
         otherEventPlanner.executeEvents()
         assertThat(otherEventPlanner.calculateTotalBenefitAmount()).isEqualTo(0)
     }
 
     @Test
     fun `혜택 금액에 따라 이벤트 배지를 증정한다_값 -6,069_별 이벤트 배지 증정`() {
-        val otherOrders = "아이스크림-2"
-        val otherEventPlanner = EventPlanner(3, otherOrders)
+        val otherEventPlanner = EventPlanner(3, "아이스크림-2")
         otherEventPlanner.executeEvents()
         assertThat(otherEventPlanner.awardBadge()).isEqualTo("별")
     }
 
     @Test
     fun `혜택 금액에 따라 이벤트 배지를 증정한다_값 -10,115_트리 이벤트 배지 증정`() {
-        val otherOrders = "아이스크림-5"
-        val otherEventPlanner = EventPlanner(3, otherOrders)
+        val otherEventPlanner = EventPlanner(3, "아이스크림-5")
         otherEventPlanner.executeEvents()
         assertThat(otherEventPlanner.awardBadge()).isEqualTo("트리")
     }
 
     @Test
     fun `혜택 금액에 따라 이벤트 배지를 증정한다_값 -20,230_산타 이벤트 배지 증정`() {
-        val otherOrders = "아이스크림-10"
-        val otherEventPlanner = EventPlanner(3, otherOrders)
+        val otherEventPlanner = EventPlanner(3, "아이스크림-10")
         otherEventPlanner.executeEvents()
         assertThat(otherEventPlanner.awardBadge()).isEqualTo("산타")
     }
