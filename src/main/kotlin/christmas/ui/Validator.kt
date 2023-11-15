@@ -9,7 +9,10 @@ private const val DECEMBER_LAST_DAY = 31
 private const val MIN_MENU_COUNT = 1
 private const val MAX_MENU_COUNT = 20
 
-object InputValidator {
+private const val MAX_PRICE_COUNT = 20
+
+
+object Validator {
 
     private val dateRegex = Regex("""^[0-9]+$""")
     private val menuRegex = Regex("""^([가-힣]+)-([0-9]+)$""")
@@ -32,5 +35,25 @@ object InputValidator {
     fun checkIsOnlyBeverage(menuNames: MutableList<String>) {
         val categories = menuNames.map { EventPlanner.menuInformation().findCategory(it) }
         require(!categories.all { it == CATEGORY_BEVERAGE })
+    }
+
+    fun checkOrders(input: String) {
+        val menuNames = mutableListOf<String>()
+        var totalCount = 0
+        input.split(",").map {
+            checkMenuNameMatchRegex(it)
+            val (name, count) = it.split("-")
+            validateEachOrder(name, count)
+            require(!menuNames.contains(name))
+            menuNames.add(name)
+            totalCount += count.toInt()
+        }
+        require(totalCount <= MAX_PRICE_COUNT)
+        checkIsOnlyBeverage(menuNames)
+    }
+
+    private fun validateEachOrder(name: String, count: String) {
+        checkMenuExist(name)
+        checkMenuCountRange(count)
     }
 }

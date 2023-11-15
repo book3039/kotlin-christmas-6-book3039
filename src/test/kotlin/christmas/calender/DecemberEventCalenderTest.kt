@@ -14,7 +14,7 @@ class DecemberEventCalenderTest {
 
     private val weekDayEventCalender = DecemberEventCalender(3)
     private val weekEndEventCalender = DecemberEventCalender(2)
-    private val testCalender = DecemberEventCalender()
+    private val testCalender = DecemberEventCalender(1)
 
     @Test
     fun `23년 12월의 날짜를 입력 받으면 평일인지 주말인지 구분한다_값 3`() {

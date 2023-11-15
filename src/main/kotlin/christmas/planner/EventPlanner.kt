@@ -7,6 +7,8 @@ import christmas.calender.DecemberEventCalender
 import christmas.event.PromotionEvent
 import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
+import christmas.ui.Validator
+import christmas.ui.Validator.checkOrders
 
 private const val NONE = "없음"
 private const val MIN_PRICE_FOR_EVENT_DISCOUNT = 10_000
@@ -17,7 +19,12 @@ private const val MIN_PRICE_FOR_SANTA_BADGE = 20_000
 
 class EventPlanner(date: Int, private val orders: String) {
 
-    private val events: List<WoowaEvent> = setEvents(date, orders)
+    private val events: List<WoowaEvent>
+
+    init {
+        checkOrders(orders)
+        events = setEvents(date, orders)
+    }
 
     private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
         if (calculateTotalOrderPrice(orders) < MIN_PRICE_FOR_EVENT_DISCOUNT) return emptyList()
