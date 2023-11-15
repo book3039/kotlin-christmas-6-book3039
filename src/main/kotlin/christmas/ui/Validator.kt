@@ -10,7 +10,6 @@ private const val MIN_MENU_COUNT = 1
 private const val MAX_MENU_COUNT = 20
 
 object Validator {
-
     private val dateRegex = Regex("""^[0-9]+$""")
     private val menuRegex = Regex("""^([가-힣]+)-([0-9]+)$""")
 

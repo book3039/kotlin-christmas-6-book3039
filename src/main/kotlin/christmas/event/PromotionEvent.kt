@@ -6,7 +6,6 @@ import christmas.planner.EventPlanner
 private const val PROMOTION_EVENT = "증정 이벤트"
 
 class PromotionEvent : WoowaEvent {
-
     override val eventName: String = PROMOTION_EVENT
     override val benefit: Int = DecemberMenuItem.BEVERAGE_CHAMPAGNE.price * -1
     private var totalCount = 1

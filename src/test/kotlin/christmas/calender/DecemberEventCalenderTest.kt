@@ -11,7 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class DecemberEventCalenderTest {
-
     private val weekDayEventCalender = DecemberEventCalender(3)
     private val weekEndEventCalender = DecemberEventCalender(2)
     private val testCalender = DecemberEventCalender(1)

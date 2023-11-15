@@ -10,7 +10,6 @@ private const val WEEKDAY_EVENT = "평일 할인"
 private const val WEEKDAY_EVENT_TARGET_MENU = CATEGORY_DESSERT
 
 class WeekDayEvent : WoowaEvent {
-
     override val eventName: String = WEEKDAY_EVENT
     override var benefit: Int = DEFAULT_DISCOUNT
     override fun execute(eventPlanner: EventPlanner) {

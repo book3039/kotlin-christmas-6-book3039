@@ -11,7 +11,6 @@ private const val TARGET_STAR_DAY = "SUNDAY"
 
 class DecemberEventCalender(private val date: Int) :
     EventCalender(TARGET_YEAR, TARGET_MONTH, date) {
-
     private val starDays: List<Int>
 
     init {

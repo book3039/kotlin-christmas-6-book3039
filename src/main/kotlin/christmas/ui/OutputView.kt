@@ -13,9 +13,7 @@ private const val ESTIMATED_PAYMENT = "<할인 후 예상 결제 금액>"
 private const val DECEMBER_EVENT_BADGE = "<12월 이벤트 배지>"
 private const val NONE = "없음"
 
-
 object OutputView {
-
     private val decimalPattern = DecimalFormat("#,###")
 
     fun printWelcomeMessage() = println("안녕하세요! 우테코 식당 $TARGET_MONTH 이벤트 플래너입니다.")

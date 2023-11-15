@@ -5,7 +5,6 @@ const val CATEGORY_MAIN = "메인"
 const val CATEGORY_DESSERT = "디저트"
 const val CATEGORY_BEVERAGE = "음료"
 
-
 enum class DecemberMenuItem(
     override val category: String,
     override val menuName: String,
