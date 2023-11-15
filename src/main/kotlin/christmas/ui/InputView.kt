@@ -18,9 +18,9 @@ object InputView {
                 val input = Console.readLine()
                 validateReadDate(input)
                 return input.toInt()
-            } catch (e: NumberFormatException) {
+            } catch (_: NumberFormatException) {
                 println(MSG_ERR_NOT_VALID_DATE)
-            } catch (e: IllegalArgumentException) {
+            } catch (_: IllegalArgumentException) {
                 println(MSG_ERR_NOT_VALID_DATE)
             }
         }
@@ -38,9 +38,9 @@ object InputView {
                 val input = Console.readLine()
                 Validator.checkOrders(input)
                 return input
-            } catch (e: NumberFormatException) {
+            } catch (_: NumberFormatException) {
                 println(MSG_ERR_NOT_VALID_ORDER)
-            } catch (e: IllegalArgumentException) {
+            } catch (_: IllegalArgumentException) {
                 println(MSG_ERR_NOT_VALID_ORDER)
             }
         }
