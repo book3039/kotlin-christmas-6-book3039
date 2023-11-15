@@ -9,7 +9,7 @@ private const val TARGET_MONTH = 12
 private const val CHRISTMAS_DAY = 25
 private const val TARGET_STAR_DAY = "SUNDAY"
 
-class DecemberEventCalender(private val date: Int = FIRST_DAY) :
+class DecemberEventCalender(private val date: Int) :
     EventCalender(TARGET_YEAR, TARGET_MONTH, date) {
 
     private val starDays: List<Int>

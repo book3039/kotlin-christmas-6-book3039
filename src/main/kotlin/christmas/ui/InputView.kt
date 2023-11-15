@@ -8,8 +8,9 @@ private const val MSG_INPUT_TAKE_ORDER = "주문하실 메뉴를 메뉴와 개�
 private const val MSG_ERR_NOT_VALID_DATE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."
 private const val MSG_ERR_NOT_VALID_ORDER = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
 
-object InputView {
+private const val MAX_PRICE_COUNT = 20
 
+object InputView {
 
     fun readDate(): Int {
         while (true) {
@@ -58,7 +59,7 @@ object InputView {
             menuNames.add(name)
             totalCount += count.toInt()
         }
-        require(totalCount <= 20)
+        require(totalCount <= MAX_PRICE_COUNT)
         InputValidator.checkIsOnlyBeverage(menuNames)
     }
 

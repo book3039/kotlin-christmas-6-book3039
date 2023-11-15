@@ -9,16 +9,21 @@ import christmas.event.WoowaEvent
 import christmas.menu.DecemberMenu
 
 private const val NONE = "없음"
+private const val MIN_PRICE_FOR_EVENT_DISCOUNT = 10_000
+private const val MIN_PRICE_FOR_PROMOTION_EVENT = 120_000
+private const val MIN_PRICE_FOR_STAR_BADGE = 5_000
+private const val MIN_PRICE_FOR_TREE_BADGE = 10_000
+private const val MIN_PRICE_FOR_SANTA_BADGE = 20_000
 
-class EventPlanner(private val date: Int, private val orders: String) {
+class EventPlanner(date: Int, private val orders: String) {
 
     private val events: List<WoowaEvent> = setEvents(date, orders)
 
     private fun setEvents(date: Int, orders: String): List<WoowaEvent> {
-        if (calculateTotalOrderPrice(orders) < 10_000) return emptyList()
+        if (calculateTotalOrderPrice(orders) < MIN_PRICE_FOR_EVENT_DISCOUNT) return emptyList()
 
         val tempEvents = DecemberEventCalender(date).createDecemberEvents().toMutableList()
-        if (calculateTotalOrderPrice(orders) >= 120_000) tempEvents += listOf(PromotionEvent())
+        if (calculateTotalOrderPrice(orders) >= MIN_PRICE_FOR_PROMOTION_EVENT) tempEvents += listOf(PromotionEvent())
 
         return tempEvents
     }
@@ -36,8 +41,10 @@ class EventPlanner(private val date: Int, private val orders: String) {
 
     fun createBenefitDetail(): List<Pair<String, Int>> = events.map { it.eventName to it.benefit }
 
-    fun calculateTotalOrderPrice(orders: String = this.orders): Int =
-        parseMenu(orders).sumOf { DecemberMenu().calculatePrice(it) }
+    fun calculateTotalOrderPrice(orders: String = this.orders): Int {
+        val decemberMenu = DecemberMenu()
+        return parseMenu(orders).sumOf { decemberMenu.calculatePrice(it) }
+    }
 
     fun calculateTotalBenefitAmount(): Int = events.sumOf { it.benefit }
 
@@ -47,9 +54,12 @@ class EventPlanner(private val date: Int, private val orders: String) {
     fun awardBadge(): String {
         val positiveTotalBenefit = (calculateTotalBenefitAmount() * -1)
 
-        if (positiveTotalBenefit in 5_000 until 10_000) return StarBadge().badgeName
-        if (positiveTotalBenefit in 10_000 until 20_000) return TreeBadge().badgeName
-        if (positiveTotalBenefit >= 20_000) return SantaBadge().badgeName
+        if (positiveTotalBenefit in MIN_PRICE_FOR_STAR_BADGE until MIN_PRICE_FOR_TREE_BADGE)
+            return StarBadge().badgeName
+        if (positiveTotalBenefit in MIN_PRICE_FOR_TREE_BADGE until MIN_PRICE_FOR_SANTA_BADGE)
+            return TreeBadge().badgeName
+        if (positiveTotalBenefit >= MIN_PRICE_FOR_SANTA_BADGE)
+            return SantaBadge().badgeName
 
         return NONE
     }

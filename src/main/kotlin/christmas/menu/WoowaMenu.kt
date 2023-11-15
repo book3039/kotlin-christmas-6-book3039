@@ -11,5 +11,6 @@ interface WoowaMenu {
         return menuInformation[name]?.first ?: throw IllegalArgumentException()
     }
 
+    // order = Pair<주문메뉴, 수량>
     fun calculatePrice(order: Pair<String, Int>): Int = findPrice(order.first) * order.second
 }

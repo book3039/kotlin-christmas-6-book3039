@@ -1,5 +1,6 @@
 package christmas.ui
 
+import christmas.menu.CATEGORY_BEVERAGE
 import christmas.menu.DecemberMenu
 
 private const val DECEMBER_FIRST_DAY = 1
@@ -30,6 +31,6 @@ object InputValidator {
 
     fun checkIsOnlyBeverage(menuNames: MutableList<String>) {
         val categories = menuNames.map { DecemberMenu().findCategory(it) }
-        require(!categories.all { it == "음료" })
+        require(!categories.all { it == CATEGORY_BEVERAGE })
     }
 }
