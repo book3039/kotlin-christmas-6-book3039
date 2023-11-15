@@ -112,4 +112,8 @@ class EventPlannerTest {
         assertThrows<IllegalArgumentException> { EventPlanner(3, "투움바파스타-1") }
     }
 
+    @Test
+    fun `메뉴를 중복으로 입력하면 예외처리 한다`() {
+        assertThrows<IllegalArgumentException> { EventPlanner(3, "아이스크림-1,아이스크림-1") }
+    }
 }
