@@ -2,6 +2,8 @@ package christmas.planner
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import kotlin.IllegalArgumentException
 
 class EventPlannerTest {
 
@@ -93,5 +95,10 @@ class EventPlannerTest {
                 "증정 이벤트" to -25000,
             ).toSet()
         )
+    }
+
+    @Test
+    fun `(메뉴이름(한글)-숫자) 형식이 아닐경우 예외처리 한다`() {
+        assertThrows<IllegalArgumentException> { EventPlanner(3, "아이스크림 1,파스타 2") }
     }
 }
